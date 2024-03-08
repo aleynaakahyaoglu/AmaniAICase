@@ -1,0 +1,158 @@
+Analyzing dependencies
+
+――― MARKDOWN TEMPLATE ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+
+### Command
+
+```
+/usr/local/bin/pod install
+```
+
+### Report
+
+* What did you do?
+
+* What did you expect to happen?
+
+* What happened instead?
+
+
+### Stack
+
+```
+   CocoaPods : 1.11.3
+        Ruby : ruby 2.6.10p210 (2022-04-12 revision 67958) [universal.arm64e-darwin23]
+    RubyGems : 3.0.3.1
+        Host : macOS 14.2.1 (23C71)
+       Xcode :  ()
+         Git : git version 2.39.3 (Apple Git-145)
+Ruby lib dir : /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib
+Repositories : cocoapods - git - https://github.com/CocoaPods/Specs.git @ 7dc1c4adc65352fbba7a31212b141201c6646266
+
+               keove-podspecs - git - https://github.com/keove/PodSpecs.git @ 9170c95e2b90854f9303c7056b7c9a1913187236
+
+               trunk - CDN - https://cdn.cocoapods.org/
+```
+
+### Plugins
+
+```
+cocoapods-deintegrate : 1.0.5
+cocoapods-plugins     : 1.0.0
+cocoapods-search      : 1.0.1
+cocoapods-trunk       : 1.6.0
+cocoapods-try         : 1.2.0
+```
+
+### Podfile
+
+```ruby
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+
+
+target 'PeopleList' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+pod 'Alamofire'
+pod 'RealmSwift', '~> 10.38'
+pod 'Resolver'
+pod 'SDWebImage', '~> 5.0'
+
+
+
+
+
+
+  # Pods for PeopleList
+
+  target 'PeopleListTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'PeopleListUITests' do
+    # Pods for testing
+  end
+
+end
+```
+
+### Error
+
+```
+LoadError - dlopen(/Library/Ruby/Gems/2.6.0/gems/ffi-1.15.5/lib/ffi_c.bundle, 0x0009): tried: '/Library/Ruby/Gems/2.6.0/gems/ffi-1.15.5/lib/ffi_c.bundle' (mach-o file, but is an incompatible architecture (have 'x86_64', need 'arm64')), '/System/Volumes/Preboot/Cryptexes/OS/Library/Ruby/Gems/2.6.0/gems/ffi-1.15.5/lib/ffi_c.bundle' (no such file), '/Library/Ruby/Gems/2.6.0/gems/ffi-1.15.5/lib/ffi_c.bundle' (mach-o file, but is an incompatible architecture (have 'x86_64', need 'arm64')) - /Library/Ruby/Gems/2.6.0/gems/ffi-1.15.5/lib/ffi_c.bundle
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+/Library/Ruby/Gems/2.6.0/gems/ffi-1.15.5/lib/ffi.rb:5:in `rescue in <top (required)>'
+/Library/Ruby/Gems/2.6.0/gems/ffi-1.15.5/lib/ffi.rb:2:in `<top (required)>'
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+/Library/Ruby/Gems/2.6.0/gems/ethon-0.15.0/lib/ethon.rb:3:in `<top (required)>'
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+/Library/Ruby/Gems/2.6.0/gems/typhoeus-1.4.0/lib/typhoeus.rb:2:in `<top (required)>'
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-core-1.11.3/lib/cocoapods-core/cdn_source.rb:440:in `download_typhoeus_impl_async'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-core-1.11.3/lib/cocoapods-core/cdn_source.rb:372:in `download_and_save_with_retries_async'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-core-1.11.3/lib/cocoapods-core/cdn_source.rb:365:in `download_file_async'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-core-1.11.3/lib/cocoapods-core/cdn_source.rb:338:in `download_file'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-core-1.11.3/lib/cocoapods-core/cdn_source.rb:284:in `ensure_versions_file_loaded'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-core-1.11.3/lib/cocoapods-core/cdn_source.rb:208:in `search'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-core-1.11.3/lib/cocoapods-core/source/aggregate.rb:83:in `block in search'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-core-1.11.3/lib/cocoapods-core/source/aggregate.rb:83:in `select'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-core-1.11.3/lib/cocoapods-core/source/aggregate.rb:83:in `search'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-1.11.3/lib/cocoapods/resolver.rb:416:in `create_set_from_sources'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-1.11.3/lib/cocoapods/resolver.rb:385:in `find_cached_set'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-1.11.3/lib/cocoapods/resolver.rb:360:in `specifications_for_dependency'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-1.11.3/lib/cocoapods/resolver.rb:165:in `search_for'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-1.11.3/lib/cocoapods/resolver.rb:274:in `block in sort_dependencies'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-1.11.3/lib/cocoapods/resolver.rb:267:in `each'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-1.11.3/lib/cocoapods/resolver.rb:267:in `sort_by'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-1.11.3/lib/cocoapods/resolver.rb:267:in `sort_by!'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-1.11.3/lib/cocoapods/resolver.rb:267:in `sort_dependencies'
+/Library/Ruby/Gems/2.6.0/gems/molinillo-0.8.0/lib/molinillo/delegates/specification_provider.rb:60:in `block in sort_dependencies'
+/Library/Ruby/Gems/2.6.0/gems/molinillo-0.8.0/lib/molinillo/delegates/specification_provider.rb:77:in `with_no_such_dependency_error_handling'
+/Library/Ruby/Gems/2.6.0/gems/molinillo-0.8.0/lib/molinillo/delegates/specification_provider.rb:59:in `sort_dependencies'
+/Library/Ruby/Gems/2.6.0/gems/molinillo-0.8.0/lib/molinillo/resolution.rb:754:in `push_state_for_requirements'
+/Library/Ruby/Gems/2.6.0/gems/molinillo-0.8.0/lib/molinillo/resolution.rb:288:in `push_initial_state'
+/Library/Ruby/Gems/2.6.0/gems/molinillo-0.8.0/lib/molinillo/resolution.rb:210:in `start_resolution'
+/Library/Ruby/Gems/2.6.0/gems/molinillo-0.8.0/lib/molinillo/resolution.rb:168:in `resolve'
+/Library/Ruby/Gems/2.6.0/gems/molinillo-0.8.0/lib/molinillo/resolver.rb:43:in `resolve'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-1.11.3/lib/cocoapods/resolver.rb:94:in `resolve'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-1.11.3/lib/cocoapods/installer/analyzer.rb:1078:in `block in resolve_dependencies'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-1.11.3/lib/cocoapods/user_interface.rb:64:in `section'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-1.11.3/lib/cocoapods/installer/analyzer.rb:1076:in `resolve_dependencies'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-1.11.3/lib/cocoapods/installer/analyzer.rb:124:in `analyze'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-1.11.3/lib/cocoapods/installer.rb:416:in `analyze'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-1.11.3/lib/cocoapods/installer.rb:241:in `block in resolve_dependencies'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-1.11.3/lib/cocoapods/user_interface.rb:64:in `section'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-1.11.3/lib/cocoapods/installer.rb:240:in `resolve_dependencies'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-1.11.3/lib/cocoapods/installer.rb:161:in `install!'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-1.11.3/lib/cocoapods/command/install.rb:52:in `run'
+/Library/Ruby/Gems/2.6.0/gems/claide-1.1.0/lib/claide/command.rb:334:in `run'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-1.11.3/lib/cocoapods/command.rb:52:in `run'
+/Library/Ruby/Gems/2.6.0/gems/cocoapods-1.11.3/bin/pod:55:in `<top (required)>'
+/usr/local/bin/pod:23:in `load'
+/usr/local/bin/pod:23:in `<main>'
+```
+
+――― TEMPLATE END ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+
+[!] Oh no, an error occurred.
+
+Search for existing GitHub issues similar to yours:
+https://github.com/CocoaPods/CocoaPods/search?q=dlopen%28%2FLibrary%2FRuby%2FGems%2F2.6.0%2Fgems%2Fffi-1.15.5%2Flib%2Fffi_c.bundle%2C+0x0009%29%3A+tried%3A+%27%2FLibrary%2FRuby%2FGems%2F2.6.0%2Fgems%2Fffi-1.15.5%2Flib%2Fffi_c.bundle%27+%28mach-o+file%2C+but+is+an+incompatible+architecture+%28have+%27x86_64%27%2C+need+%27arm64%27%29%29%2C+%27%2FSystem%2FVolumes%2FPreboot%2FCryptexes%2FOS%2FLibrary%2FRuby%2FGems%2F2.6.0%2Fgems%2Fffi-1.15.5%2Flib%2Fffi_c.bundle%27+%28no+such+file%29%2C+%27%2FLibrary%2FRuby%2FGems%2F2.6.0%2Fgems%2Fffi-1.15.5%2Flib%2Fffi_c.bundle%27+%28mach-o+file%2C+but+is+an+incompatible+architecture+%28have+%27x86_64%27%2C+need+%27arm64%27%29%29+-+%2FLibrary%2FRuby%2FGems%2F2.6.0%2Fgems%2Fffi-1.15.5%2Flib%2Fffi_c.bundle&type=Issues
+
+If none exists, create a ticket, with the template displayed above, on:
+https://github.com/CocoaPods/CocoaPods/issues/new
+
+Be sure to first read the contributing guide for details on how to properly submit a ticket:
+https://github.com/CocoaPods/CocoaPods/blob/master/CONTRIBUTING.md
+
+Don't forget to anonymize any private data!
+
+Looking for related issues on cocoapods/cocoapods...
